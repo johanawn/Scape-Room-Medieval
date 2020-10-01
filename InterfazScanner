@@ -197,7 +197,7 @@ public class InterfazScanner{
 		
 	}
 	public void abandona() {
-		System.out.println("BITCH");
+		System.out.println("Has abandonado el Juego :c");
 	}
 	public void pierde() {
 		System.out.println("YOU ARE A LOOSER");
