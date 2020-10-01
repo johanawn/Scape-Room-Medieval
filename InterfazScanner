@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -193,7 +192,7 @@ public class InterfazScanner{
 	}
 
 	public void gana() {
-		System.out.println("YEI!!! YOU WIN, BUT STILL A LOOSER");
+		System.out.println("YEI!!! YOU WIN!!!");
 		
 		
 	}
