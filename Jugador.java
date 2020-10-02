@@ -1,4 +1,6 @@
 
+
+
 import java.util.ArrayList;
 public class Jugador{
 	Cartas Mago = new Cartas();
@@ -10,14 +12,18 @@ public class Jugador{
 	public String nombre;
 	private boolean ataca = false;
 	int m = 0;
+	int numerohabitacion;
 	
 	
-	public Jugador(int vida, int movimiento, String nombre, int numeroHabitacion) {
+	public Jugador(double vida2, int movimiento, String nombre, int numeroHabitacion) {
 		this.movimientos = movimiento;
-		this.vida = vida;
+		this.vida = vida2;
 		this.nombre = nombre;
+		this.numerohabitacion = sala.getNumeroHabitacion();
 
 	}
+
+	
 
 	// mantiene el record la persona que menos movimientos ha hecho en el escape o el más lejos que ha llegado.
 	public double Atacar(double vidaRecibidor, double ataqueAtacador, double defensaRecibidor, int cantidadDeAtaques ){
@@ -44,13 +50,23 @@ public class Jugador{
 		   ataca=false;
 		}
 		
-		return m;
+		movimientos = m;
+		
+		return movimientos;
 	}
 
 	
-	public Habitacion getSala() {
-		return sala;
+
+	public int getNumerohabitacion() {
+		return numerohabitacion;
 	}
+
+
+	public void setNumerohabitacion(int numerohabitacion) {
+		this.numerohabitacion = numerohabitacion;
+	}
+
+
 
 	public void setSala(Habitacion sala) {
 		this.sala = sala;
