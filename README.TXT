@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
-HOW TO START THIS PROJECT:
-AUTHORS:
+PROJECT TITLE: Juego Scape Room Medieval
+PURPOSE OF PROJECT: Tarea Programada 
+VERSION or DATE:1/10/2020
+HOW TO START THIS PROJECT:Javac Main.java para compilar, java Main (consola o Paneles) para iniciar.
+AUTHORS: Saindell Sabrina Brenes Hernández
 USER INSTRUCTIONS:
