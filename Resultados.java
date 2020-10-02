@@ -5,18 +5,21 @@ public class Resultados {
 	private String nombre;
 	private int numeroHabitacion;
 	public String record;
-	Cartas cartas = new Cartas();
-	InterfazScanner interfaz = new InterfazScanner();
-	Jugador player = new Jugador( vida, movimiento, nombre, numeroHabitacion);
-	Habitacion habitacion = new Habitacion();
+	private double letalidad;
+	private double nivelAgua;
+	private double vidaMago;
+	private double vidaDragon;
+	private double vidaEspada;
 	
 	
-	public String RegistroHistorico() {
+	
+	
+	public String RegistroHistorico(int movimiento) {
 		String representacion = "";
 		
-		for(int i = 0; i < player.getMovimientos(); i++) {
+		for(int i = 0; i < movimiento; i++) {
 			
-			representacion = "-HABITACION: "+ player.getNumerohabitacion() + " -LETALIDAD: "+habitacion.getLetalidad()+" -NIVEL DE AGUA: "+habitacion.getNivelAgua()+"\nMOVIMIENTOS EFECTUADOS: "+player.getVida()+"\nVIDA DE SUS CARTAS: -MAGO: "+cartas.getAtaqueMago()+"% -ESPADA: "+cartas.getVidaEspada()+"% -DRAGON: "+cartas.getAtaqueEspada()+"%";
+			representacion = "-HABITACION: "+ numeroHabitacion + " -LETALIDAD: "+ letalidad+" -NIVEL DE AGUA: "+nivelAgua+"\nMOVIMIENTOS EFECTUADOS: "+vida+"\nVIDA DE SUS CARTAS: -MAGO: "+vidaMago+"% -ESPADA: "+vidaEspada+"% -DRAGON: "+vidaDragon+"%";
 		}
 		return representacion;
 	}
@@ -77,38 +80,129 @@ public class Resultados {
 	}
 
 
+
 	public double getVida() {
 		return vida;
 	}
+
+
 
 	public void setVida(double vida) {
 		this.vida = vida;
 	}
 
-	public double getMovimiento() {
+
+
+	public int getMovimiento() {
 		return movimiento;
 	}
 
+
+
 	public void setMovimiento(int movimiento) {
-		this.movimiento =  movimiento;
+		this.movimiento = movimiento;
 	}
+
+
 
 	public String getNombre() {
 		return nombre;
 	}
 
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public double getNumeroHabitacion() {
+
+
+	public int getNumeroHabitacion() {
 		return numeroHabitacion;
 	}
+
+
 
 	public void setNumeroHabitacion(int numeroHabitacion) {
 		this.numeroHabitacion = numeroHabitacion;
 	}
+
+
+
+	public String getRecord() {
+		return record;
+	}
+
+
+
+	public void setRecord(String record) {
+		this.record = record;
+	}
+
+
+
+	public double getLetalidad() {
+		return letalidad;
+	}
+
+
+
+	public void setLetalidad(double letalidad) {
+		this.letalidad = letalidad;
+	}
+
+
+
+	public double getNivelAgua() {
+		return nivelAgua;
+	}
+
+
+
+	public void setNivelAgua(double nivelAgua) {
+		this.nivelAgua = nivelAgua;
+	}
+
+
+
+	public double getVidaMago() {
+		return vidaMago;
+	}
+
+
+
+	public void setVidaMago(double vidaMago) {
+		this.vidaMago = vidaMago;
+	}
+
+
+
+	public double getVidaDragon() {
+		return vidaDragon;
+	}
+
+
+
+	public void setVidaDragon(double vidaDragon) {
+		this.vidaDragon = vidaDragon;
+	}
+
+
+
+	public double getVidaEspada() {
+		return vidaEspada;
+	}
+
+
+
+	public void setVidaEspada(double vidaEspada) {
+		this.vidaEspada = vidaEspada;
+	}
+
+
+
 	
 	
 
 }
+

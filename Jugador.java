@@ -1,12 +1,8 @@
 
 
 
-import java.util.ArrayList;
 public class Jugador{
-	Cartas Mago = new Cartas();
-	Cartas Dragon = new Cartas();
-	Cartas Espada = new Cartas();
-	Habitacion sala = new Habitacion();
+
 	int movimientos;
 	public double vida = 1.0;
 	public String nombre;
@@ -19,21 +15,15 @@ public class Jugador{
 		this.movimientos = movimiento;
 		this.vida = vida2;
 		this.nombre = nombre;
-		this.numerohabitacion = sala.getNumeroHabitacion();
+		this.numerohabitacion = numeroHabitacion;
 
 	}
-
-	
 
 	// mantiene el record la persona que menos movimientos ha hecho en el escape o el más lejos que ha llegado.
 	public double Atacar(double vidaRecibidor, double ataqueAtacador, double defensaRecibidor, int cantidadDeAtaques ){
 		ataca = true;
 		double resultadoAtaque = 0;
-		sala.subirLetalidad();
-		Mago.Mago();
-		Dragon.Dragon();
-		Espada.Espada();
-
+		//recordar llamar los métodos de las cartas Mago, Espada y Dragon, y subir el nivel del agua.
 		for(int i = 0; i <= cantidadDeAtaques; i += 1){
 			resultadoAtaque = (vidaRecibidor - ataqueAtacador) + defensaRecibidor;
 		
@@ -66,12 +56,6 @@ public class Jugador{
 		this.numerohabitacion = numerohabitacion;
 	}
 
-
-
-	public void setSala(Habitacion sala) {
-		this.sala = sala;
-	}
-
 	public int getMovimientos() {
 		return movimientos;
 	}
@@ -99,3 +83,4 @@ public class Jugador{
 	
 
 }
+
