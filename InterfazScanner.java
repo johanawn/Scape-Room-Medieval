@@ -1,9 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.*;
 
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 public class InterfazScanner{
 	Resultados resultado = new Resultados();
 	Scanner lector = new Scanner(System.in);
@@ -88,9 +87,6 @@ public class InterfazScanner{
 				lector.next();
 			
 			}
-
-	
-		
 		if (respuesta == 1) {
 			respuesta2 = respuesta;
 		}else {
@@ -114,7 +110,12 @@ public class InterfazScanner{
 		return respuesta2;
 	}
 	
-	
+	public int registroJuego(){
+		
+        
+		return ;
+	}
+
 	public String mostrarRecord() {
 		
 		String datosMejorJugador = resultado.toString();
@@ -178,9 +179,7 @@ public class InterfazScanner{
 	}
 
 	public void gana() {
-		System.out.println("YEI!!! YOU WIN, BUT STILL A LOOSER");
-		
-		
+		System.out.println("YEI!!! YOU WIN, BUT STILL A LOOSER");	
 	}
 	public void abandona() {
 		System.out.println("BITCH");
@@ -205,3 +204,4 @@ public class InterfazScanner{
 
 
 	}
+
