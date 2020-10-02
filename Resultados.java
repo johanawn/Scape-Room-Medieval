@@ -1,13 +1,29 @@
 
 public class Resultados {
 	private double vida;
-	private double movimiento;
+	private int movimiento;
 	private String nombre;
-	private double numeroHabitacion;
+	private int numeroHabitacion;
 	public String record;
+	Cartas cartas = new Cartas();
+	InterfazScanner interfaz = new InterfazScanner();
+	Jugador player = new Jugador( vida, movimiento, nombre, numeroHabitacion);
+	Habitacion habitacion = new Habitacion();
+	
+	
+	public String RegistroHistorico() {
+		String representacion = "";
+		
+		for(int i = 0; i < player.getMovimientos(); i++) {
+			
+			representacion = "-HABITACION: "+ player.getNumerohabitacion() + " -LETALIDAD: "+habitacion.getLetalidad()+" -NIVEL DE AGUA: "+habitacion.getNivelAgua()+"\nMOVIMIENTOS EFECTUADOS: "+player.getVida()+"\nVIDA DE SUS CARTAS: -MAGO: "+cartas.getAtaqueMago()+"% -ESPADA: "+cartas.getVidaEspada()+"% -DRAGON: "+cartas.getAtaqueEspada()+"%";
+		}
+		return representacion;
+	}
+	
 	
 
-	public Resultados(double vida, double movimiento, String nombre, double numeroHabitacion) {
+	public Resultados(double vida, int movimiento, String nombre, int numeroHabitacion) {
 
 	     setNombre(nombre);
 	     setMovimiento(movimiento);
@@ -73,8 +89,8 @@ public class Resultados {
 		return movimiento;
 	}
 
-	public void setMovimiento(double movimiento) {
-		this.movimiento = movimiento;
+	public void setMovimiento(int movimiento) {
+		this.movimiento =  movimiento;
 	}
 
 	public String getNombre() {
@@ -89,7 +105,7 @@ public class Resultados {
 		return numeroHabitacion;
 	}
 
-	public void setNumeroHabitacion(double numeroHabitacion) {
+	public void setNumeroHabitacion(int numeroHabitacion) {
 		this.numeroHabitacion = numeroHabitacion;
 	}
 	
