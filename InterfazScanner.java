@@ -1,14 +1,13 @@
 
-import java.util.ArrayList;
+
 import java.util.Scanner;
-import javax.swing.*;
+
 
 public class InterfazScanner{
-	Resultados resultado = new Resultados();
 	Scanner lector = new Scanner(System.in);
 	Boolean iniciarJuego = false;
 	boolean Jugar = false;
-	ArrayList<String>nombres = new ArrayList<String>();
+  
 	
 	
 	public int quiereJugar(){
@@ -30,14 +29,16 @@ public class InterfazScanner{
 		
 			
 			if (eleccion == 1) {
+				eleccion = 0;
 				eleccion2 = eleccion;
 			}else {
 				if (eleccion == 2) {
+					eleccion = 1;
 					eleccion2 = eleccion;
 				}else {
 					if (eleccion == 3) {
-						System.out.println("salistes");
-						 abandona();
+						eleccion = 2;
+						eleccion2 = eleccion;
 					}else {
 						if (eleccion > 3 || eleccion <= 0) {
 							   System.out.println("Fuera de rango");
@@ -55,27 +56,17 @@ public class InterfazScanner{
 }
 
 	
-	public String registroHistorico() {
-		String representacion = "";
-		
-		return representacion;
-		
-		
-	}
-	
-	
-
 	public String pedirNombre() {
 		System.out.println("Digite su nombre");
 		String nombre = lector.next();
-		System.out.println(nombre+" se le ha entregado 3 carta: 1 MAGO, 1 ESPADA, 1 DRAGÓN");
+		System.out.println(nombre+" se le ha entregado 3 carta: 1 MAGO, 1 ESPADA, 1 DRAGÓN\n");
 		return nombre;
 	}
 
 	public int menuyRespuesta(){
 		
 		Scanner lector = new Scanner(System.in);
-		System.out.println("1. Hacer un movimiento \n2. Ve registro histórico de su juego \n3.Abandonar el juego ");
+		System.out.println("1. Hacer un movimiento \n2. Ver registro histórico de su juego \n3.Abandonar el juego ");
 		int respuesta;
 		int respuesta2 = 0;
 		try {
@@ -88,14 +79,16 @@ public class InterfazScanner{
 			
 			}
 		if (respuesta == 1) {
+			respuesta = 0;
 			respuesta2 = respuesta;
 		}else {
 			if (respuesta == 2) {
+				respuesta = 1;
 				respuesta2 = respuesta;
 			}else {
 				if (respuesta == 3) {
-					System.out.println("salistes");
-					 abandona();
+					respuesta = 2;
+					respuesta2 = respuesta;
 				}else {
 					if (respuesta > 3 || respuesta <= 0) {
 						   System.out.println("Fuera de rango");
@@ -110,21 +103,10 @@ public class InterfazScanner{
 		return respuesta2;
 	}
 	
-	public int registroJuego(){
-		
-        
-		return ;
-	}
-
-	public String mostrarRecord() {
-		
-		String datosMejorJugador = resultado.toString();
-	          return datosMejorJugador;
-		}
 	
 	
 	public int menuAtaque() {
-		System.out.println("ELIJA LA CARTA PARA ATACAR \n Digite el numero de la opcion que desea \n 1.Mago \n 2.Dragon \n 3.Espada \n4.Abandonar el juego");
+		System.out.println("ELIJA LA CARTA PARA ATACAR \n Digite el numero de la opcion que desea \n 1.Mago \n 2.Dragon \n 3.Espada \n");
 		int respuesta2;
 	    int respuesta3 = 0;
 	    try {
@@ -137,29 +119,29 @@ public class InterfazScanner{
 			
 			}
 		if (respuesta2 == 1) {
+			respuesta2 = 0;
 			respuesta3 = respuesta2;
 		}else {
 			if (respuesta2 == 2) {
+				respuesta2 = 1;
 				respuesta3 = respuesta2;
 			}else {
 				if (respuesta2 == 3) {
+					respuesta2 = 2;
 					respuesta3 = respuesta2;
 				}else {
-					if (respuesta2 == 4) {
-						System.out.println("Salistes");
-			        	abandona();
-					}else {
-						if(respuesta2> 4 || respuesta2 <= 0) {
+				
+						if(respuesta2> 3 || respuesta2 <= 0) {
 							 System.out.println("Fuera de rango");
 						        menuAtaque();
 						}
-					}
+					
 				}
 			}
 		}
 	    
 	
-		return respuesta2;
+		return respuesta3;
 	}
 	
 	
@@ -190,7 +172,7 @@ public class InterfazScanner{
 	
 	public void mostrarStats(int numeroHabitacion, double vidajugador, double vidaMago, double vidaDragon, double vidaEspada, double letalidad, double nivelAgua ){
 	
-		System.out.println("-HABITACION: "+ numeroHabitacion+ " -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+nivelAgua+"\nMOVIMIENTOS EFECTUADOS: "+vidajugador+"\nVIDA DE SUS CARTAS: -MAGO: "+vidaMago+"% -ESPADA: "+vidaEspada+"% -DRAGON: "+vidaDragon+"%");
+		System.out.println("-HABITACION: "+ numeroHabitacion+ " -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+nivelAgua+"\nTU VIDA: "+vidajugador+"\nVIDA DE SUS CARTAS: -MAGO: "+vidaMago+"% -ESPADA: "+vidaEspada+"% -DRAGON: "+vidaDragon+"%\n");
 		
 	}
 	
@@ -204,4 +186,3 @@ public class InterfazScanner{
 
 
 	}
-
