@@ -1,3 +1,5 @@
+package equipo3;
+
 
 /**
  * Crea las habitaciones en el juego.

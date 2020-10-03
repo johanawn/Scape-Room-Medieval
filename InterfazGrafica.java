@@ -1,5 +1,3 @@
-package equipo3;
-
 
 /**
  * Write a description of class InterfazGrafica here.
@@ -11,7 +9,6 @@ import javax.swing.*;
 
 
 public class InterfazGrafica{
-	Resultados resultados = new resultados();
 	String [] opcionesInciciales = {"EMPEZAR EL JUEGO", "SALIR DEL JUEGO", "HIGHEST SCORE"};
 	String [] eleccionCartas = {"MAGO", "ESPADA", "DRAGON"};
 	String [] opcionesInGame = {"HACER MOVIMIENTO", "REGISTRO DE JUEGO", "ABANDONAR JUEGO"};
@@ -35,8 +32,8 @@ public class InterfazGrafica{
 		int eleccionInicial = JOptionPane.showOptionDialog(null, "¿Qué desea hacer?", "BIENVENIDO AL SCAPE ROOM MEDIEVAL", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesInciciales, opcionesInciciales[0]);
 		return eleccionInicial;
 	}
-	public int records(){
-		String datosMejorJugador = resultados.toString();
+	public int records(String records){
+		String datosMejorJugador = records;
 		JOptionPane.showMessageDialog(null, new JTextArea(datosMejorJugador));
 		int elegir = opcionesInciales();
 		return elegir;
