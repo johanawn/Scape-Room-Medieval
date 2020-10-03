@@ -47,7 +47,7 @@ public class Resultados {
 
 
 
-	public String CompararHabitacion(double distancia, double distanciaNuevo, double movimiento, double movimientoNuevo, double vida, double vidaNuevo) {
+	public String Comparar(double distancia, double distanciaNuevo, double movimiento, double movimientoNuevo, double vida, double vidaNuevo) {
 		    record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
 		
 		if(distancia ==  distanciaNuevo && movimiento == movimientoNuevo && vida == vidaNuevo ) {
@@ -76,8 +76,8 @@ public class Resultados {
 	}
 
 
-	public String toString(String nombre, double distancia, double movimiento, double vida) {
-	       CompararHabitacion(distancia, 0.0, movimiento, 0.0, vida, 0.0) ;
+	public String toStringRecord(String nombre, double distancia, double movimiento, double vida) {
+	       Comparar(distancia, 0.0, movimiento, 0.0, vida, 0.0) ;
 		return nombre+" Resultados "+record;
 	}
 
