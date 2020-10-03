@@ -6,13 +6,21 @@
  * @version (1/10/2020)
  */
 public class Habitacion{
-	private int numeroHabitacion = 1;
-	private Cartas cartaEnemiga = new Cartas();
-	private double letalidad = 0.2;
-	private double agua = 0;
-	private boolean puertaAbierta = false;
+	private int numeroHabitacion;
+	private Cartas cartaEnemiga;
+	private double letalidad;
+	private double nivelAgua;
+	private boolean puertaAbierta;
 	
-	public int cambiarNumeroHabitacion(boolean abierto){
+	public Habitacion(){
+		setNumeroHabitacion(1);
+		setLetalidad(0.2);
+		setNivelAgua(0);
+		setPuertaAbierta(false);
+		int random = (int)((Math.random()*3));
+		cartaEnemiga = new Cartas(random);
+	}
+	public void cambiarNumeroHabitacion(boolean abierto){
 		if(abierto == true){
 			numeroHabitacion += 1;
 		}
@@ -28,17 +36,20 @@ public class Habitacion{
 		return letalidad;	
 	}
 	public double nivelAgua(){
-		return agua += letalidad;
+		return nivelAgua += letalidad;
 	}
 	public int getNumeroHabitacion(){
 		return numeroHabitacion;
 	}
 	public double getNivelAgua(){
-		return agua;
+		return nivelAgua;
 	}
 	public double getLetalidad(){
 		return letalidad;
 	}
+	public Cartas getCartaEnemiga(){
+	    return cartaEnemiga;
+	   }
 	public boolean morir(double vidaMago, double vidaEspada, double vidaDragon){
 		boolean morir = false;
 		if ((vidaMago < letalidad) && (vidaEspada < letalidad) && (vidaDragon < letalidad)){
@@ -47,14 +58,10 @@ public class Habitacion{
 		return morir;
 	}
 	public double dañoAgua(double vida){
-		if (agua >= 1.0){
+		if (nivelAgua >= 1.0){
 			vida -=letalidad;
 		}
 		return vida;
-	}
-	public void cartaEnemiga(){
-		int random = (int)((Math.random()*3));
-		cartaEnemiga.carta(random);
 	}
 	public String toString(){
 		String estadoPuerta="";
@@ -64,6 +71,21 @@ public class Habitacion{
 		else{
 			estadoPuerta = "Abierta";
 		}
-		return "HABITACION: "+numeroHabitacion+" -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+agua+" -ESTADO DE LA PUERTA: "+estadoPuerta;
+		return "HABITACION: "+numeroHabitacion+" -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+nivelAgua+" -ESTADO DE LA PUERTA: "+estadoPuerta;
+	}
+	public void setNumeroHabitacion(int numeroHabitacion) {
+		this.numeroHabitacion = numeroHabitacion;
+	}
+	public void setLetalidad(double letalidad) {
+		this.letalidad= letalidad;
+	}
+	public void setNivelAgua(double nivelAgua) {
+		this.nivelAgua = nivelAgua;
+	}
+	public void setPuertaAbierta(boolean puertaAbierta) {
+		this.puertaAbierta = puertaAbierta;
+	}
+	public void setCartaEnemiga(Cartas cartaEnemiga){
+	    this.cartaEnemiga = cartaEnemiga;
 	}
 }

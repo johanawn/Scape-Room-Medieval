@@ -1,3 +1,5 @@
+package equipo3;
+
 
 /**
  * Write a description of class InterfazGrafica here.

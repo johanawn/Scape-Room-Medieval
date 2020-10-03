@@ -1,21 +1,36 @@
 
-
-
+/**
+ * Write a description of class Jugador here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
 public class Jugador{
 
-	int movimientos;
-	public double vida = 1.0;
-	public String nombre;
-	private boolean ataca = false;
-	int m = 0;
-	int numerohabitacion;
+	private int movimientos;
+	private double vida;
+	private String nombre;
+	private boolean ataca;
+	private Cartas mago;
+	private Cartas espada;
+	private Cartas dragon;
 	
+	public Jugador(){
+		setNombre("");
+		setMovimientos(0);
+		setVida(1.0);
+		int construirCartas = 0;
+		mago = new Cartas(construirCartas);
+		construirCartas++;
+		espada = new Cartas(construirCartas);
+		construirCartas++;
+		dragon = new Cartas(construirCartas);
+	}
 	
 	public Jugador(double vida2, int movimiento, String nombre, int numeroHabitacion) {
 		this.movimientos = movimiento;
 		this.vida = vida2;
 		this.nombre = nombre;
-		this.numerohabitacion = numeroHabitacion;
 
 	}
 
@@ -33,29 +48,8 @@ public class Jugador{
 	
 	
 	//Cada vez que ataca sea true, se le suma 1 al contador de movimientos.
-	public int Movimiento() {
-	
-		if (ataca == true) {
-			m++;
-		   ataca=false;
-		}
-		
-		movimientos = m;
-		
-		return movimientos;
-	}
 
 	
-
-	public int getNumerohabitacion() {
-		return numerohabitacion;
-	}
-
-
-	public void setNumerohabitacion(int numerohabitacion) {
-		this.numerohabitacion = numerohabitacion;
-	}
-
 	public int getMovimientos() {
 		return movimientos;
 	}
@@ -79,8 +73,24 @@ public class Jugador{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-
+	public void setCartaMago(Cartas cartaMago){
+	    this.mago = cartaMago;
+	   }
+	   public void setCartaEspada(Cartas cartaEspada){
+	    this.espada = cartaEspada;
+	   }
+	   public void setCartaDragon(Cartas cartaDragon){
+	       this.dragon = cartaDragon;
+	   }
+	   public Cartas getCartaMago(){
+	       return mago;
+	   }
+	   public Cartas getCartaEspada(){
+	       return espada;
+	   }
+	   public Cartas getCartaDragon(){
+	       return dragon;
+	   }
+	   
 }
 
