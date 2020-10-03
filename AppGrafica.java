@@ -13,6 +13,7 @@ public class AppGrafica{
     private Jugador player;
     private Cartas cartaEnemiga;
     private Cartas cartaJugador;
+    private Resultados resultados;
     
     public AppGrafica(){
         interfaz = new InterfazGrafica();
@@ -20,8 +21,9 @@ public class AppGrafica{
         mementos = new Habitacion();
         abyss = new Habitacion();
         player = new Jugador();
+        resultados = new Resultados();
     }
-    private Cartas conseguirCarta(int cartaElegida1){
+    private void conseguirCarta(int cartaElegida1){
         if(cartaElegida1 == 0){
             this.cartaJugador = player.getCartaMago();
         }
@@ -32,7 +34,7 @@ public class AppGrafica{
             this.cartaJugador = player.getCartaDragon();
         }
     }
-    private Cartas conseguirCartaHabitacion(int numeroHabitacion){
+    private void conseguirCartaHabitacion(int numeroHabitacion){
         if (numeroHabitacion == 1){
         this.cartaEnemiga = tartarus.getCartaEnemiga();
     }
@@ -43,42 +45,42 @@ public class AppGrafica{
         this.cartaEnemiga = abyss.getCartaEnemiga();
     }
 }
-    private Cartas trianguloArmas(Cartas cartaEnemiga, Cartas cartaElegida, int numeroAtaques){
+    private void trianguloArmas(Cartas cartaEnemiga, Cartas cartaElegida, int numeroAtaques){
         double vida = 0.0;
         for(int i = 0; i < numeroAtaques; i++){
-            if (cartaEnemiga.getTipo() == cartaElegida.getTipo() && cartaElegida.getVida() > 0){
+            if (cartaEnemiga.getTipo().equals(cartaElegida.getTipo()) && cartaElegida.getVida() > 0){
                 vida = cartaEnemiga.getVida() - cartaElegida.getAtaque()+ cartaEnemiga.getDefensa();
                 cartaEnemiga.setVida(vida);
                 vida = cartaElegida.getVida() - cartaEnemiga.getAtaque() + cartaElegida.getDefensa();
                 cartaElegida.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "MAGO" && cartaElegida.getTipo() == "DRAGON"){
+            if (cartaEnemiga.getTipo().equals("MAGO") && cartaElegida.getTipo().equals("DRAGON") && cartaElegida.getVida() > 0){
                 vida = cartaEnemiga.getVida() - cartaElegida.getAtaque()+ cartaEnemiga.getDefensa();
                 cartaEnemiga.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "ESPADA" && cartaElegida.getTipo() == "MAGO"){
+            if (cartaEnemiga.getTipo().equals("ESPADA") && cartaElegida.getTipo().equals("MAGO") && cartaElegida.getVida() > 0){
                 vida = cartaEnemiga.getVida() - cartaElegida.getAtaque()+ cartaEnemiga.getDefensa();
                 cartaEnemiga.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "DRAGON" && cartaElegida.getTipo() == "ESPADA"){
+            if (cartaEnemiga.getTipo().equals("DRAGON") && cartaElegida.getTipo().equals("ESPADA") && cartaElegida.getVida() > 0){
                 vida = cartaEnemiga.getVida() - cartaElegida.getAtaque()+ cartaEnemiga.getDefensa();
                 cartaEnemiga.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "MAGO" && cartaElegida.getTipo() == "ESPADA"){
+            if (cartaEnemiga.getTipo().equals("MAGO") && cartaElegida.getTipo().equals("ESPADA") && cartaElegida.getVida() > 0){
                 vida = cartaElegida.getVida() - cartaEnemiga.getAtaque()+ cartaElegida.getDefensa();
                 cartaElegida.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "ESPADA" && cartaElegida.getTipo() == "DRAGON"){
+            if (cartaEnemiga.getTipo().equals("ESPADA") && cartaElegida.getTipo().equals("DRAGON") && cartaElegida.getVida() > 0){
                 vida = cartaElegida.getVida() - cartaEnemiga.getAtaque()+ cartaElegida.getDefensa();
                 cartaElegida.setVida(vida);
             }
-            if (cartaEnemiga.getTipo() == "DRAGON" && cartaElegida.getTipo() == "MAGO"){
+            if (cartaEnemiga.getTipo().equals("DRAGON") && cartaElegida.getTipo().equals("MAGO") && cartaElegida.getVida() > 0){
                 vida = cartaElegida.getVida() - cartaEnemiga.getAtaque()+ cartaElegida.getDefensa();
                 cartaElegida.setVida(vida);
             }
         }
     }
-    private Cartas actualizarCartas(Cartas cartaElegida, Cartas cartaEnemiga, int cartaElegida1, int habitacionActual){
+    private void actualizarCartas(Cartas cartaElegida, Cartas cartaEnemiga, int cartaElegida1, int habitacionActual){
         if (cartaElegida1 == 0){
             player.setCartaMago(cartaElegida);
         }
@@ -107,6 +109,8 @@ public class AppGrafica{
         conseguirCartaHabitacion(habitacionActual);
         trianguloArmas(cartaJugador, cartaEnemiga, numeroAtaques);
         actualizarCartas(cartaJugador, cartaEnemiga, cartaElegida1, habitacionActual);
+        player.agregarMovimiento();
     }
+    
 }
 

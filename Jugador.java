@@ -47,9 +47,10 @@ public class Jugador{
 	}
 	
 	
-	//Cada vez que ataca sea true, se le suma 1 al contador de movimientos.
+	public void agregarMovimiento(){
+	    movimientos += 1;
+	   }
 
-	
 	public int getMovimientos() {
 		return movimientos;
 	}
