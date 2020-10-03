@@ -1,3 +1,5 @@
+package equipo3;
+
 
 public class Resultados {
 	private double vida;

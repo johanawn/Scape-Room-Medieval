@@ -1,3 +1,5 @@
+package equipo3;
+
 public class TrianguloCartas{
 	
 public void Triangulo(int cartaElegida, int cartaEnemiga, int numeroMovimientos){
