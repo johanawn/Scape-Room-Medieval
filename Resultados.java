@@ -107,11 +107,77 @@ public class Resultados {
 		return nombre+" Resultados "+record;
 	}
 
+<<<<<<< HEAD
+	public String Comparar(double distancia, double distanciaNuevo, double movimiento, double movimientoNuevo, double vida, double vidaNuevo) {
+		    record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+		
+		if(distancia ==  distanciaNuevo && movimiento == movimientoNuevo && vida == vidaNuevo ) {
+			record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+		
+		}
+		if(distancia ==  distanciaNuevo && movimiento < movimientoNuevo && vida > vidaNuevo || vida < vidaNuevo  ) {
+			record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+			
+		}
+		
+		if(distancia ==  distanciaNuevo && movimiento > movimientoNuevo &&  vida > vidaNuevo || vida < vidaNuevo) {
+			record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+movimientoNuevo + "Habitacion: "+distanciaNuevo;
+			
+		}
+		if(distancia <  distanciaNuevo) {
+			record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+movimientoNuevo + "Habitacion: "+distanciaNuevo;
+	
+		}
+		
+		if(distancia >  distanciaNuevo) {
+			record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+ movimientoNuevo + "Habitacion: "+distanciaNuevo;
+		}
+	
+		return record;
+	}
 
 
+	public String toStringRecord(String nombre, double distancia, double movimiento, double vida) {
+	       Comparar(distancia, 0.0, movimiento, 0.0, vida, 0.0) ;
+		return nombre+" Resultados "+record;
+	}
+=======
+
+
+<<<<<<< HEAD
 	public double getVida() {
 		return vida;
 	}
+=======
+    public String CompararHabitacion(double distancia, double distanciaNuevo, double movimiento, double movimientoNuevo, double vida, double vidaNuevo) {
+            record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+        
+        if(distancia ==  distanciaNuevo && movimiento == movimientoNuevo && vida == vidaNuevo ) {
+            record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+        
+        }
+        if(distancia ==  distanciaNuevo && movimiento < movimientoNuevo && vida > vidaNuevo || vida < vidaNuevo  ) {
+            record = "Vida: "+ vida + "Cantidad de Movimientos: "+movimiento + "Habitacion: "+distancia;
+            
+        }
+        
+        if(distancia ==  distanciaNuevo && movimiento > movimientoNuevo &&  vida > vidaNuevo || vida < vidaNuevo) {
+            record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+movimientoNuevo + "Habitacion: "+distanciaNuevo;
+            
+        }
+        if(distancia <  distanciaNuevo) {
+            record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+movimientoNuevo + "Habitacion: "+distanciaNuevo;
+    
+        }
+        
+        if(distancia >  distanciaNuevo) {
+            record = "Vida: "+ vidaNuevo + "Cantidad de Movimientos: "+ movimientoNuevo + "Habitacion: "+distanciaNuevo;
+        }
+    
+        return record;
+    }
+>>>>>>> 1d75801666c752ea6731d28880cd4b7356f11549
+>>>>>>> 595dae2c867aaeab21ac4ff012c43e3c117e355c
 
 
 
