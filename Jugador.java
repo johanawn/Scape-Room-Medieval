@@ -92,6 +92,10 @@ public class Jugador{
 	   public Cartas getCartaDragon(){
 	       return dragon;
 	   }
+
+public String toString() {
+		return "Jugador [movimientos=" + movimientos + ", vida=" + vida + ", nombre=" + nombre + ", mago=" + mago + ", espada=" + espada + ", dragon=" + dragon + "]";
+	}
 	   
 }
 

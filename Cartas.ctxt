@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Cartas
+comment0.text=\n\ Write\ a\ description\ of\ class\ Cartas\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=numeroCarta
+comment1.target=Cartas(int)
+comment2.params=
+comment2.target=double\ getVida()
+comment3.params=
+comment3.target=double\ getDefensa()
+comment4.params=
+comment4.target=double\ getAtaque()
+comment5.params=
+comment5.target=java.lang.String\ getTipo()
+comment6.params=tipo
+comment6.target=void\ setTipo(java.lang.String)
+comment7.params=vida
+comment7.target=void\ setVida(double)
+comment8.params=defensa
+comment8.target=void\ setDefensa(double)
+comment9.params=ataque
+comment9.target=void\ setAtaque(double)
+numComments=10

@@ -1,4 +1,4 @@
-package equipo3;
+ 
 
 public class TrianguloCartas{
 	
