@@ -1,55 +1,38 @@
 
-/**
- * Write a description of class Jugador here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import java.util.ArrayList;
 public class Jugador{
 
-	private int movimientos;
-	private double vida;
-	private String nombre;
-	private boolean ataca;
-	private Cartas mago;
-	private Cartas espada;
-	private Cartas dragon;
+
+	int movimientos;
+	public double vida = 1.0;
+	public String nombre;
+	private boolean ataca = false;
+	int m = 0;
 	
-	public Jugador(){
-		setNombre("");
+	
+	public Jugador() {
 		setMovimientos(0);
 		setVida(1.0);
-		int construirCartas = 0;
-		mago = new Cartas(construirCartas);
-		construirCartas++;
-		espada = new Cartas(construirCartas);
-		construirCartas++;
-		dragon = new Cartas(construirCartas);
-	}
-	
-	public Jugador(double vida2, int movimiento, String nombre, int numeroHabitacion) {
-		this.movimientos = movimiento;
-		this.vida = vida2;
-		this.nombre = nombre;
+		setNombre("");
 
 	}
+	
+	
 
 	// mantiene el record la persona que menos movimientos ha hecho en el escape o el más lejos que ha llegado.
-	public double Atacar(double vidaRecibidor, double ataqueAtacador, double defensaRecibidor, int cantidadDeAtaques ){
-		ataca = true;
-		double resultadoAtaque = 0;
-		//recordar llamar los métodos de las cartas Mago, Espada y Dragon, y subir el nivel del agua.
-		for(int i = 0; i <= cantidadDeAtaques; i += 1){
-			resultadoAtaque = (vidaRecibidor - ataqueAtacador) + defensaRecibidor;
-		
-		}
-		return resultadoAtaque;
+	
+	
+	
+	//Cada vez que ataca sea true, se le suma 1 al contador de movimientos.
+	public void sumarMovimiento() {
+	  movimientos += 1;
+	
 	}
+
 	
-	
-	public void agregarMovimiento(){
-	    movimientos += 1;
-	   }
+
+
+
 
 	public int getMovimientos() {
 		return movimientos;
@@ -74,28 +57,7 @@ public class Jugador{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public void setCartaMago(Cartas cartaMago){
-	    this.mago = cartaMago;
-	   }
-	   public void setCartaEspada(Cartas cartaEspada){
-	    this.espada = cartaEspada;
-	   }
-	   public void setCartaDragon(Cartas cartaDragon){
-	       this.dragon = cartaDragon;
-	   }
-	   public Cartas getCartaMago(){
-	       return mago;
-	   }
-	   public Cartas getCartaEspada(){
-	       return espada;
-	   }
-	   public Cartas getCartaDragon(){
-	       return dragon;
-	   }
+	
+	
 
-public String toString() {
-		return "Jugador [movimientos=" + movimientos + ", vida=" + vida + ", nombre=" + nombre + ", mago=" + mago + ", espada=" + espada + ", dragon=" + dragon + "]";
-	}
-	   
 }
-
