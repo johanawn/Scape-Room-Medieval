@@ -3,9 +3,9 @@ public class Habitacion{
 	private double letalidad = 0.15;
 	private double agua = 0.0;
 	private boolean puertaAbierta = false;
+	private Cartas cartaEnemiga;
 	
-	
-	
+
 	public void cambiarNumeroHabitacion(boolean abierto){
 		if(abierto == true){
 			numeroHabitacion += 1;
@@ -24,6 +24,30 @@ public class Habitacion{
         }
 	
 	
+	public void setNumeroHabitacion(int numeroHabitacion) {
+			this.numeroHabitacion = numeroHabitacion;
+		}
+
+	public double getAgua() {
+		return agua;
+	}
+
+	public void setAgua(double agua) {
+		this.agua = agua;
+	}
+
+	public boolean isPuertaAbierta() {
+		return puertaAbierta;
+	}
+
+	public void setPuertaAbierta(boolean puertaAbierta) {
+		this.puertaAbierta = puertaAbierta;
+	}
+
+	public void setLetalidad(double letalidad) {
+		this.letalidad = letalidad;
+	}
+
 	public double nivelAgua(){
 		return agua += letalidad;
 	}
@@ -60,4 +84,3 @@ public class Habitacion{
 		return "HABITACION: "+numeroHabitacion+" -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+agua+" -ESTADO DE LA PUERTA: "+estadoPuerta;
 	}
 }
-
