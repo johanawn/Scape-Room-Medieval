@@ -1,30 +1,22 @@
 
 public class Cartas{
-String Tipo = "";
-double vida = 0.0;
-double defensa = 0.0;
-double ataque = 0.0;
+private String tipo ;
+private double vida ;
+private double defensa ;
+private double ataque ;
 
-public void Carta(int numeroCarta){
-	if(numeroCarta == 0){
-	Tipo = "MAGO";
-	vida = 1.0 ;
-	defensa =  (Math.random() *5+1)*0.1;
-        ataque =  (Math.random()*4+6)*0.1;
-	}
-	else if(numeroCarta == 1){
-	Tipo = "ESPADA";
-	vida = 1.0 ;
-	defensa =  (Math.random() *5+1)*0.1;
-        ataque =  (Math.random()*4+6)*0.1;
-	}
-	if(numeroCarta == 2){
-	Tipo = "DRAGON";
-	vida = 1.0 ;
-	defensa =  (Math.random() *5+1)*0.1;
-        ataque =  (Math.random()*4+6)*0.1;
-	}
+public Cartas(){
+	setVida(1.0);
+	setDefensa(Math.random() *0.4000000000000001 + 0.1);
+	setAtaque((Math.random()*4.0000000000000001+6)*0.1);
+
+
+
+
 }
+
+
+
 
 
 
@@ -43,18 +35,75 @@ public double getDefensa(){
 public double getAtaque(){
 	return ataque;
 }
-public String getTipo(){
-	return Tipo;
+
+
+public void setVida(double vida){
+  this.vida = vida;
 }
-public void setVida(double Vida1){
-  this.vida = Vida1;
+public void setDefensa(double defensa){
+  this.defensa = defensa;
 }
-public void setDefensa(double Defensa1){
-  this.defensa = Defensa1;
+public void setAtaque(double ataque){
+  this.ataque = ataque;
 }
-public void setAtaque(double Ataque1){
-  this.ataque = Ataque1;
+
+
+public void trianguloAfectacionMago(Cartas cartaEnemiga, int cartaMala, int numeroAtaques){
+
+	if (cartaMala == 1 ) {
+		for(int i = 1; i <= numeroAtaques; i +=1) {
+			cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+		}
+	}
+	else if (cartaMala == 0) {
+		for(int i = 1; i <= numeroAtaques; i +=1) {
+			cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+			setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+		}
+	}
+	else if ( cartaMala == 2) {
+		for(int i = 1; i <= numeroAtaques; i +=1) {
+			setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+		}
+	}
+
 }
+	public void trianguloAfectacionEspada(Cartas cartaEnemiga, int cartaMala, int numeroAtaques){
+
+		if (  cartaMala == 2) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+			}
+		} else if ( cartaMala == 1 ) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+				setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+			}
+		} else if (  cartaMala == 0) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+			}
+		}
+
+	}
+	public void trianguloAfectacionDragon(Cartas cartaEnemiga, int cartaMala, int numeroAtaques){
+
+		if (cartaMala == 0) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+			}
+		} else if ( cartaMala == 2) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				cartaEnemiga.setVida((cartaEnemiga.getVida() - getAtaque()) + cartaEnemiga.getDefensa());
+				setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+			}
+		} else if (cartaMala == 1) {
+			for(int i = 1; i <= numeroAtaques; i +=1) {
+				setVida((getVida() - cartaEnemiga.getAtaque()) + getDefensa());
+			}
+		}
+
+	}
 
 
 
