@@ -1,3 +1,4 @@
+
 public class Habitacion{
 	private int numeroHabitacion = 0;
 	private double letalidad = 0.15;
@@ -67,6 +68,7 @@ public class Habitacion{
 		}
 		return morir;
 	}
+
 	public double efectoAgua(double vida){
 		if (agua >= 1.0){
 			vida -=letalidad;
@@ -83,4 +85,16 @@ public class Habitacion{
 		}
 		return "HABITACION: "+numeroHabitacion+" -LETALIDAD: "+letalidad+" -NIVEL DE AGUA: "+agua+" -ESTADO DE LA PUERTA: "+estadoPuerta;
 	}
+<<<<<<< HEAD:Habitacion .java
 }
+=======
+	public void setNumeroHabitacion(int numeroHabitacion){
+		this.numeroHabitacion = numeroHabitacion;
+	}
+	public void setLetalidad(double letalidad){
+	this.letalidad = letalidad;
+	}
+
+}
+
+>>>>>>> e16d2ecc96ca8cb7697ab6e9c0327eccd0902491:Habitacion.java

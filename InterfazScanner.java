@@ -15,7 +15,7 @@ public class InterfazScanner{
 	public int quiereJugar(){
 		
 	
-		System.out.println("Bienvenido a Scape Room Medieval\n1. Ver el historial del mejor juego hasta el momento.\n2. Entrar a la habitación para iniciar su juego\n3. Salir y abandonar el juego ");
+		System.out.println("\n1. Ver el historial del mejor juego hasta el momento.\n2. Entrar a la habitación para iniciar su juego\n3. Salir y abandonar el juego ");
 		int eleccion2 = 0;
 		int eleccion;
 	   
@@ -32,28 +32,29 @@ public class InterfazScanner{
 			
 			if (eleccion == 1) {
 				eleccion2 = eleccion;
-			}else {
-				if (eleccion == 2) {
-					eleccion2 = eleccion;
-				}else {
-					if (eleccion == 3) {
-						System.out.println("salistes");
-						 abandona();
-					}else {
-						if (eleccion > 3 || eleccion <= 0) {
-							   System.out.println("Fuera de rango");
-						        quiereJugar();
-						}
-					}
-				}
 			}
+			else if (eleccion == 2) {
+					eleccion2 = eleccion;
+			}
+			else if (eleccion == 3) {
+				eleccion2 = eleccion;
+				System.out.println("salistes");
+			}
+			else if (eleccion > 3 || eleccion <= 0) {
+				System.out.println("Fuera de rango");
+				quiereJugar();
+			}
+			return eleccion2;
+						}
+
+
+
 			
 	    	 
 	
   
     
-    return eleccion2;
-}
+
 
 	
 	public String registroHistorico() {
@@ -99,6 +100,7 @@ public class InterfazScanner{
 			}else {
 				if (respuesta == 3) {
 					System.out.println("salistes");
+					respuesta2 = respuesta;
 				}else {
 					if (respuesta > 3 || respuesta <= 0) {
 						   System.out.println("Fuera de rango");
@@ -122,14 +124,14 @@ public class InterfazScanner{
 	
 	
 	public int elegirCarta() {
-		System.out.println("\nELIJA LA CARTA PARA ATACAR \n Digite el numero de la opcion que desea \n\n 0.Mago \n 1.Espada \n 2.Dragon \n 3.Abandonar el juego\n");
+		System.out.println("\nELIJA LA CARTA PARA ATACAR \n Digite el numero de la opcion que desea \n\n 0.Mago \n 1.Espada \n 2.Dragon \n");
 		int respuesta2;
 	    int respuesta3 = 0;
 	    try {
 			respuesta2 = lector.nextInt();
 			}
 			catch(Exception e) {
-	                 System.out.println("Recuerda que el rango es de 0 a 1");
+	                 System.out.println("Recuerda que el rango es de 0 a 2");
 				respuesta2 = 0;
 				lector.next();
 			
@@ -144,8 +146,9 @@ public class InterfazScanner{
 					respuesta3 = respuesta2;
 				}else {
 					if (respuesta2 == 3) {
+						respuesta3 = respuesta2;
 						System.out.println("Salistes");
-			        	abandona();
+
 					}else {
 						if(respuesta2> 3 || respuesta2 < 0) {
 							 System.out.println("Fuera de rango");
