@@ -1,3 +1,5 @@
+package equipo3;
+
 
 /**
  * Write a description of class InterfazGrafica here.
@@ -80,6 +82,9 @@ public class InterfazGrafica{
             perderGitGud();
         }
     }
+	public void bienvenida(){
+	JOptionPane.showMessageDialog(null, "Cuando comiences el juego, se te entregarán tus cartas","BIENVENIDO AL SCAPE ROOM", JOptionPane.WARNING_MESSAGE);
+	}
     public int antesDeMover(String juego){
         mostrarEstadisticasJugador(juego);
         int antesDeMover = JOptionPane.showOptionDialog(null,"¿Qué acción tomarás?","CUIDA TUS PASOS", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesInGame, opcionesInGame[0]);
