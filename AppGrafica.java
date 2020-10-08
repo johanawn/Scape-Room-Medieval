@@ -1,231 +1,290 @@
-import javax.swing.JOptionPane;
+
+
 
 public class AppGrafica{
-    private  int cartaMala = 0;
+    private int cartaMala = 0;
     private Cartas mago;
-    private boolean puerta;
     private Cartas espada;
     private Cartas dragon;
     private Cartas cartaEnemiga;
-    private Resultados resultados = new Resultados();
-    private InterfazGrafica interfaz = new InterfazGrafica();
-    private Habitacion habitacion = new Habitacion();
-    private Jugador maesito = new Jugador();
-    private Object Cartas;  
-    private String registroStatsApp = "";
-    private String registroHistorico="";
-    private String record = "";
-private String k = "";
-    public void ejecutar(){
+    private Cartas cartaHabitacion1;
+    private Cartas cartaHabitacion2;
+    private Cartas cartaHabitacion3;
+    private double nivelAguaFinalHab1 = 0.0;
+	private double nivelAguaFinalHab2 = 0.0;
+	private double nivelAguaFinalHab3 = 0.0;
+	private int tipoHab1 =  0;
+	private int tipoHab2 =  0;
+	private int tipoHab3 =  0;
 
-        boolean salirDelJuego = false;
-        mago = new Cartas();
-        espada = new Cartas();
-        dragon = new Cartas();
-        registroStatsApp += resultados.registroMago(mago.getVida(), mago.getAtaque(), mago.getDefensa());
-        registroStatsApp += resultados.registroEspada(espada.getVida(), espada.getAtaque(), espada.getDefensa());
-        registroStatsApp += resultados.registroDragon(dragon.getVida(), dragon.getAtaque(), dragon.getDefensa());
+    Resultados resultados = new Resultados();
+    InterfazGrafica interfaz = new InterfazGrafica();
+    Habitacion habitacion = new Habitacion();
+    Jugador maesito = new Jugador();
+    String registroStatsApp = "";
+	boolean jugar = true;
+	boolean seguirJugando = true;
+	String registroHistorico="";
 
-        boolean jugar = true;
-        boolean seguirJugando = false;
-        String nombre = interfaz.pedirNombre();
-        maesito.setNombre(nombre);
+	public void ejecutar(){
+          
+		  System.out.println("BIENVENIDO AL SCAPEROOM MEDIEVAL!!!");
+          String nombre = interfaz.pedirNombre();
+          maesito.setNombre(nombre);
+          mago = new Cartas();
+          espada = new Cartas();
+          dragon = new Cartas();
+		  cartaHabitacion1 = new Cartas();
+		  cartaHabitacion2 = new Cartas();
+		  cartaHabitacion3 = new Cartas();
+		  tipoHab1 =  0;
+		  tipoHab2 =  0;
+		  tipoHab3 =  0;
+		  registroStatsApp = (resultados.registroCartasJugador(mago.getVida(), mago.getAtaque(), mago.getDefensa(), espada.getVida(), espada.getAtaque(), espada.getDefensa(),dragon.getVida(), dragon.getAtaque(), dragon.getDefensa())+resultados.registrocartasHabitacion(cartaHabitacion1.getVida(), cartaHabitacion1.getAtaque(), cartaHabitacion1.getDefensa(),cartaHabitacion2.getVida(), cartaHabitacion2.getAtaque(), cartaHabitacion2.getDefensa(),cartaHabitacion3.getVida(), cartaHabitacion3.getAtaque(), cartaHabitacion3.getDefensa(),tipoHab1, tipoHab2, tipoHab3));
+		  jugar = true;
+      while(jugar == true){
+
+		  if (habitacion.getNumeroHabitacion() == 3){
+			  // LLAMAR A METODO DE INTERFAZ	
+			  interfaz.ganar();
+			  maesito.setVida(1.0);
+			  mago = new Cartas();
+			  espada = new Cartas();
+			  dragon = new Cartas();
+			  cartaHabitacion1 = new Cartas();
+			  cartaHabitacion2 = new Cartas();
+			  cartaHabitacion3 = new Cartas();
+			  
+			  registroStatsApp = (resultados.registroCartasJugador(mago.getVida(), mago.getAtaque(), mago.getDefensa(), espada.getVida(), espada.getAtaque(), espada.getDefensa(),dragon.getVida(), dragon.getAtaque(), dragon.getDefensa())+resultados.registrocartasHabitacion(cartaHabitacion1.getVida(), cartaHabitacion1.getAtaque(), cartaHabitacion1.getDefensa(),cartaHabitacion2.getVida(), cartaHabitacion2.getAtaque(), cartaHabitacion2.getDefensa(),cartaHabitacion3.getVida(), cartaHabitacion3.getAtaque(), cartaHabitacion3.getDefensa(),tipoHab1, tipoHab2, tipoHab3)+resultados.resultadosHabitacionesPerder(nivelAguaFinalHab1,nivelAguaFinalHab2,nivelAguaFinalHab3));
+			  
+			  interfaz.mostrarEstadisticasJugador(registroStatsApp);
+			  tipoHab1 =  0;
+			  tipoHab2 =  0;
+			  tipoHab3 =  0;
+			  nivelAguaFinalHab1 = 0;
+			  nivelAguaFinalHab2 = 0;
+			  nivelAguaFinalHab3 = 0;
+			  habitacion.setNumeroHabitacion(0);
+			  habitacion.setLetalidad(0.15);
+			  maesito.setMovimientos(0);
+			  String nombre3 = interfaz.pedirNombre();
+			  maesito.setNombre(nombre3);
+			  seguirJugando = false;
+			  jugar = true;
+		  }
+
+
         int quiereJugar = interfaz.opcionesIniciales();
+ 
+        if(quiereJugar == 1){
 
-        while(jugar == true  ){
+            cartaEnemiga = new Cartas();
+            habitacion.setNivelAgua(0.0);
+            habitacion.cambiarNumeroHabitacion(true);
+			cartaMala = interfaz.randomCartas();
+			if(habitacion.getNumeroHabitacion() == 1){
+				tipoHab1 = cartaMala;
+			}
+			if(habitacion.getNumeroHabitacion() == 2){
+				tipoHab2 = cartaMala;
+			}
+			if(habitacion.getNumeroHabitacion() == 3){
+				tipoHab3 = cartaMala;
+			}
 
-            if(quiereJugar == 1){
+            if(habitacion.getNumeroHabitacion() == 1){
+            	cartaEnemiga.setAtaque(cartaHabitacion1.getAtaque());
+            	cartaEnemiga.setDefensa(cartaHabitacion1.getDefensa());
+			}
+			else if(habitacion.getNumeroHabitacion() == 2){
+				cartaEnemiga.setAtaque(cartaHabitacion2.getAtaque());
+				cartaEnemiga.setDefensa(cartaHabitacion2.getDefensa());
+			}
+			else if(habitacion.getNumeroHabitacion() == 3){
+				cartaEnemiga.setAtaque(cartaHabitacion3.getAtaque());
+				cartaEnemiga.setDefensa(cartaHabitacion3.getDefensa());
+			}
 
-                cartaMala = interfaz.randomCartas();
-                cartaEnemiga = new Cartas();
-                habitacion.setNivelAgua(0.0);
-                habitacion.cambiarNumeroHabitacion(true);
-                if(habitacion.getNumeroHabitacion() <= 3){
-                    registroStatsApp+= resultados.registroEnemiga(habitacion.getNumeroHabitacion(), cartaMala, cartaEnemiga.getVida(), cartaEnemiga.getAtaque(), cartaEnemiga.getDefensa());
+            habitacion.subirLetalidad();
 
-                }
-                // PERDE
+            seguirJugando = true;
+            while(seguirJugando == true) {
 
-                habitacion.subirLetalidad();
+            	String stats = resultados.toStringStats(maesito.getNombre(), maesito.getVida(), mago.getVida(), espada.getVida(), dragon.getVida(), habitacion.getNumeroHabitacion(), maesito.getMovimientos(), habitacion.getNivelAgua(), habitacion.getLetalidad());
+            	registroHistorico += stats;
+            	resultados.registro(stats);
+				
+				interfaz.mostrarEstadisticasJugador(stats);
+				// LLAMAR A METODO DE INTERFAZ
 
-                if(habitacion.getNumeroHabitacion() > 3){
-                	
-                	
-                    puerta=true;
-                    jugar = false;
-                    seguirJugando = false;
-                    // LLAMAR A METODO DE INTERFAZ
-                    puerta = false;
-                    interfaz.ganar();
-                    interfaz.mostrarEstadisticasJugador(registroStatsApp);
-                    mago.setDefensa(Math.random() *0.4000000000000001 + 0.1);
-                    mago.setAtaque((Math.random()*4.0000000000000001+6)*0.1);
-                    dragon.setDefensa(Math.random() *0.4000000000000001 + 0.1);
-                    dragon.setAtaque((Math.random()*4.0000000000000001+6)*0.1);
-                    espada.setDefensa(Math.random() *0.4000000000000001 + 0.1);
-                    espada.setAtaque((Math.random()*4.0000000000000001+6)*0.1);
-                    maesito.setVida(1.0);
-                    mago.setVida(1.0);
-                    espada.setVida(1.0);
-                    dragon.setVida(1.0);
-                    habitacion.setNumeroHabitacion(1);
-                    habitacion.setNivelAgua(0.0);
-                    habitacion.setLetalidad(0.2);
-                    maesito.setMovimientos(0);
-                    nombre = interfaz.pedirNombre();
-                    maesito.setNombre(nombre);
-                    quiereJugar = interfaz.opcionesIniciales();
+				int queHacer = interfaz.antesDeMover(stats);
+				if (queHacer == 0) {
+					if (habitacion.getNivelAgua() < 1.0) {
+						habitacion.subirAgua(habitacion.getLetalidad());
+					}
+					else if (habitacion.getNivelAgua() >= 1.0) {
+						habitacion.setNivelAgua(1.0);
+					}
+					if (habitacion.getNivelAgua() == 1.0) {
+						maesito.setVida(maesito.getVida() -habitacion.getLetalidad());
+					}
 
-                }
-
-                seguirJugando = true;
-                while(seguirJugando == true ) {
-                	
-                    String stats = resultados.toStringStats(maesito.getNombre(), maesito.getVida(), mago.getVida(), espada.getVida(), dragon.getVida(), habitacion.getNumeroHabitacion(), maesito.getMovimientos(), habitacion.getNivelAgua(), habitacion.getLetalidad());
-                    registroHistorico += stats;
-                    resultados.registro(stats);
-                    
-        
-                    int queHacer = interfaz.antesDeMover(stats);
-                    if (queHacer == 0) {
-                        if (habitacion.getNivelAgua() < 1.0 ) {
-                            habitacion.subirAgua(habitacion.getLetalidad());
-                        } else if (habitacion.getNivelAgua() >= 1.0) {
-                            habitacion.setNivelAgua(1.0);
-                        }
-                        if (habitacion.getNivelAgua() == 1.0 || habitacion.getNivelAgua() >= 1.0  ) {
-                            habitacion.setAgua(1.0);
-                            maesito.setVida(maesito.getVida() - (maesito.getVida() * habitacion.getLetalidad()));
-                        }
-
-                        int cartaElegida = interfaz.eleccionDeCartas();
-
-                        if(cartaElegida == 0 && mago.getVida() <=0){
-                            interfaz.cartaMuerta();
-                            seguirJugando = false;
-                        }
-                        else if(cartaElegida == 1 && espada.getVida() <=0){
-                            interfaz.cartaMuerta();
-                            seguirJugando = false;
-                        }
-                        else if(cartaElegida == 2 && dragon.getVida() <=0){
-                            interfaz.cartaMuerta();
-                            seguirJugando = false;
-                        }
-                        else {
-                            maesito.sumarMovimiento();
-                            int cantidadAtaques = interfaz.cantidadAtaques();
-                            for (int i = 1; i <= cantidadAtaques; i += 1) {
-
-                                if (cartaElegida == 0 && cartaMala == 1) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - mago.getAtaque()) + cartaEnemiga.getDefensa());
-                                } else if (cartaElegida == 0 && cartaMala == 0) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - mago.getAtaque()) + cartaEnemiga.getDefensa());
-                                    mago.setVida((mago.getVida() - cartaEnemiga.getAtaque()) + mago.getDefensa());
-                                } else if (cartaElegida == 0 && cartaMala == 2) {
-                                    mago.setVida((mago.getVida() - cartaEnemiga.getAtaque()) + mago.getDefensa());
-                                } else if (cartaElegida == 1 && cartaMala == 2) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - espada.getAtaque()) + cartaEnemiga.getDefensa());
-                                } else if (cartaElegida == 1 && cartaMala == 1) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - espada.getAtaque()) + cartaEnemiga.getDefensa());
-                                    espada.setVida((espada.getVida() - cartaEnemiga.getAtaque()) + espada.getDefensa());
-                                } else if (cartaElegida == 1 && cartaMala == 0) {
-                                    espada.setVida((espada.getVida() - cartaEnemiga.getAtaque()) + espada.getDefensa());
-                                } else if (cartaElegida == 2 && cartaMala == 0) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - dragon.getAtaque()) + cartaEnemiga.getDefensa());
-                                } else if (cartaElegida == 2 && cartaMala == 2) {
-                                    cartaEnemiga.setVida((cartaEnemiga.getVida() - dragon.getAtaque()) + cartaEnemiga.getDefensa());
-                                    dragon.setVida((dragon.getVida() - cartaEnemiga.getAtaque()) + dragon.getDefensa());
-                                } else if (cartaElegida == 2 && cartaMala == 1) {
-                                    dragon.setVida((dragon.getVida() - cartaEnemiga.getAtaque()) + dragon.getDefensa());
-                                }
-
-                            }
-                        }
-
-                       
-
-                        if (cartaEnemiga.getVida() <= 0) {
-                            puerta = true;
-                            registroStatsApp += habitacion.toString(puerta);
-                            puerta = false;
-                            interfaz.derrotaHabitacion(habitacion.getNumeroHabitacion());
-                            seguirJugando = false;
-                            jugar = true;
-
-                        }
-
-                        else if((mago.getVida()<=0 || dragon.getVida()>0 || espada.getVida()>0)||(mago.getVida()<=0 || dragon.getVida()<=0 || espada.getVida()>0) || (mago.getVida()<=0 || dragon.getVida()>0 || espada.getVida()<=0) || (mago.getVida()>0 || dragon.getVida()>0 || espada.getVida()<=0) || (mago.getVida()>0 || dragon.getVida()<=0 || espada.getVida()>0) || (mago.getVida()>0 || dragon.getVida()>0 || espada.getVida()>0)){
-                            seguirJugando = true;
-                        }
-
-                        if (((mago.getVida()<=0 && dragon.getVida()<=0 && espada.getVida()<=0) || maesito.getVida() <= 0)){
-                            // LLAMAR A METODO DE INTERFAZ
-                            interfaz.perderGitGud();
-                           
-                            JOptionPane.showMessageDialog(null, registroStatsApp);
-                            quiereJugar = interfaz.opcionesIniciales();
-
-                            seguirJugando = false;
-                            jugar = false;
-                        }
-
-                        else if((mago.getVida()<= habitacion.getLetalidad() && dragon.getVida()<= habitacion.getLetalidad() && espada.getVida()<= habitacion.getLetalidad())){
-                            // LLAMAR A METODO DE INTERFAZ
-                        	
-                            interfaz.perderGitGud();
-                            seguirJugando = false;
-                            jugar = false;
-                            JOptionPane.showMessageDialog(null, registroStatsApp);
-                            quiereJugar = interfaz.opcionesIniciales();
-
-                        }
+					int cartaElegida = interfaz.eleccionDeCartas();
 
 
-                    } else if (queHacer == 2) {
+					if(cartaElegida == 0 && mago.getVida() <=0){
+						
+						interfaz.cartaMuerta();
+						seguirJugando = true;
+					}
+					else if(cartaElegida == 1 && espada.getVida() <=0){
+						
+						interfaz.cartaMuerta();
+						seguirJugando = true;
+					}
+					else if(cartaElegida == 2 && dragon.getVida() <=0){
+						
+						interfaz.cartaMuerta();
+						seguirJugando = true;
+					}
+					else {
+						maesito.sumarMovimiento();
 
-                        JOptionPane.showMessageDialog(null, registroStatsApp);
+							if (cartaElegida == 0) {
+								int cantidadAtaques = interfaz.cantidadAtaques();
+								mago.trianguloAfectacionMago(cartaEnemiga, cartaMala, cantidadAtaques);
+							} else if (cartaElegida == 1) {
+								int cantidadAtaques = interfaz.cantidadAtaques();
+								espada.trianguloAfectacionEspada(cartaEnemiga, cartaMala, cantidadAtaques);
 
-                        maesito.setVida(1.0);
-                        mago.setVida(1.0);
-                        espada.setVida(1.0);
-                        dragon.setVida(1.0);
-                        habitacion.setNumeroHabitacion(0);
-                        habitacion.setNivelAgua(0.0);
-                        habitacion.setLetalidad(0.2);
-                        maesito.setMovimientos(0);
+							} else if (cartaElegida == 2) {
+								int cantidadAtaques = interfaz.cantidadAtaques();
+								dragon.trianguloAfectacionDragon(cartaEnemiga, cartaMala, cantidadAtaques);
+							}
 
-                        quiereJugar = interfaz.opcionesIniciales();
 
-                        if(quiereJugar ==2) {
-                            jugar = false;
-                            seguirJugando = false;
-                        }
 
-                    } else if (queHacer == 1) {
-                        interfaz.registroJuego(registroHistorico);
 
-                    }
+					}
 
-                }
+					if (cartaEnemiga.getVida() <=0) {
+						// LLAMAR A METODO DE INTERFAZ
+						
+			        	
+						interfaz.derrotaHabitacion(habitacion.getNumeroHabitacion());
+						if(habitacion.getNumeroHabitacion() == 1){
+							nivelAguaFinalHab1 = habitacion.getNivelAgua();
+						}
+						else if(habitacion.getNumeroHabitacion() == 2){
+							nivelAguaFinalHab2 = habitacion.getNivelAgua();
+						}
+						else if(habitacion.getNumeroHabitacion() == 3){
+							nivelAguaFinalHab3 = habitacion.getNivelAgua();
+						}
+						seguirJugando = false;
+						jugar = true;
+
+					}
+
+
+					else if (((mago.getVida()<=0 && dragon.getVida()<=0 && espada.getVida()<=0) || maesito.getVida() <= 0)){
+						// LLAMAR A METODO DE INTERFAZ
+					
+			        	
+						interfaz.perderGitGud();
+						maesito.setVida(1.0);
+						mago = new Cartas();
+						espada = new Cartas();
+						dragon = new Cartas();
+						cartaHabitacion1 = new Cartas();
+						cartaHabitacion2 = new Cartas();
+						cartaHabitacion3 = new Cartas();
+						registroStatsApp = (resultados.registroCartasJugador(mago.getVida(), mago.getAtaque(), mago.getDefensa(), espada.getVida(), espada.getAtaque(), espada.getDefensa(),dragon.getVida(), dragon.getAtaque(), dragon.getDefensa())+resultados.registrocartasHabitacion(cartaHabitacion1.getVida(), cartaHabitacion1.getAtaque(), cartaHabitacion1.getDefensa(),cartaHabitacion2.getVida(), cartaHabitacion2.getAtaque(), cartaHabitacion2.getDefensa(),cartaHabitacion3.getVida(), cartaHabitacion3.getAtaque(), cartaHabitacion3.getDefensa(),tipoHab1, tipoHab2, tipoHab3)+resultados.resultadosHabitacionesPerder(nivelAguaFinalHab1,nivelAguaFinalHab2,nivelAguaFinalHab3));
+						interfaz.mostrarEstadisticasJugador(registroStatsApp);
+						tipoHab1 =  0;
+						tipoHab2 =  0;
+						tipoHab3 =  0;
+						nivelAguaFinalHab1 = 0;
+						nivelAguaFinalHab2 = 0;
+						nivelAguaFinalHab3 = 0;
+						habitacion.setNumeroHabitacion(0);
+						habitacion.setNivelAgua(0.0);
+						habitacion.setLetalidad(0.15);
+						maesito.setMovimientos(0);
+						String nombre3 = interfaz.pedirNombre();
+						maesito.setNombre(nombre3);
+						seguirJugando = false;
+						jugar = true;
+					}
+
+					else if((mago.getVida()< habitacion.getLetalidad() && dragon.getVida()< habitacion.getLetalidad() && espada.getVida()< habitacion.getLetalidad())){
+						// LLAMAR A METODO DE INTERFAZ
+						
+			        	
+						interfaz.perderGitGud();
+   
+						maesito.setVida(1.0);
+						mago = new Cartas();
+						espada = new Cartas();
+						dragon = new Cartas();
+						cartaHabitacion1 = new Cartas();
+						cartaHabitacion2 = new Cartas();
+						cartaHabitacion3 = new Cartas();
+						registroStatsApp = (resultados.registroCartasJugador(mago.getVida(), mago.getAtaque(), mago.getDefensa(), espada.getVida(), espada.getAtaque(), espada.getDefensa(),dragon.getVida(), dragon.getAtaque(), dragon.getDefensa())+resultados.registrocartasHabitacion(cartaHabitacion1.getVida(), cartaHabitacion1.getAtaque(), cartaHabitacion1.getDefensa(),cartaHabitacion2.getVida(), cartaHabitacion2.getAtaque(), cartaHabitacion2.getDefensa(),cartaHabitacion3.getVida(), cartaHabitacion3.getAtaque(), cartaHabitacion3.getDefensa(),tipoHab1, tipoHab2, tipoHab3)+resultados.resultadosHabitacionesPerder(nivelAguaFinalHab1,nivelAguaFinalHab2,nivelAguaFinalHab3));
+						
+						interfaz.mostrarEstadisticasJugador(registroStatsApp);
+						tipoHab1 =  0;
+						tipoHab2 =  0;
+						tipoHab3 =  0;
+						nivelAguaFinalHab1 = 0;
+						nivelAguaFinalHab2 = 0;
+						nivelAguaFinalHab3 = 0;
+						habitacion.setNumeroHabitacion(0);
+						habitacion.setNivelAgua(0.0);
+						habitacion.setLetalidad(0.15);
+						maesito.setMovimientos(0);
+						String nombre4 = interfaz.pedirNombre();
+						maesito.setNombre(nombre4);
+						seguirJugando = false;
+						jugar = true;
+					}
+
+
+
+				}
+
+				else if (queHacer == 2) {
+					seguirJugando = false;
+					jugar = false;
+					 quiereJugar = interfaz.opcionesIniciales();
+
+				} else if (queHacer == 1) {
+					
+					interfaz.registroJuego(registroHistorico);
+
+				}
+				else{
+					seguirJugando = true;
+				}
+
             }
-            else if(quiereJugar == 2){
-                jugar = false;
-                seguirJugando = false;
-
-            }else if (quiereJugar == 0) {
-            	
-            	resultados.verificarRecord(maesito.getNombre(), habitacion.getNumeroHabitacion(), maesito.getMovimientos(), maesito.getVida());
-            	JOptionPane.showMessageDialog(null, resultados.getRecord());
-            	
-            	 quiereJugar = interfaz.opcionesIniciales();
-            }
-
         }
-
+        else if(quiereJugar == 2){
+          jugar = false;
+        }else if (quiereJugar == 0) {
+        	
+        	interfaz.records(resultados.getRecord());
+        	 quiereJugar = interfaz.opcionesIniciales();
+        }
+      
+      }
+      
+      
 
     }
-
+    
+    
 
 }
+
 
